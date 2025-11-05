@@ -8,6 +8,7 @@
 
 -npx expo start -c
 
+
 ⚙️ Kullanılan Teknolojiler
 
 -React Native (Expo)
@@ -17,6 +18,10 @@
 -React Navigation (Sayfa geçişleri için)
 
 -React Native Vector Icons (İkonlar için)
+
+
+
+
 
 
 <img width="1645" height="783" alt="RastMobileTask" src="https://github.com/user-attachments/assets/28ec6a85-b2a2-4902-ae5b-c67c2fd7c3ce" />
