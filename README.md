@@ -15,9 +15,9 @@
 
 -JavaScript
 
--React Navigation (Sayfa geçişleri için)
+-React Navigation
 
--React Native Vector Icons (İkonlar için)
+-React Native Vector Icons 
 
 
 
