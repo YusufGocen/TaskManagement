@@ -38,23 +38,21 @@ const Data=[
     },
 
 ]
-const index = () => {
+const index = ({newTask}) => {
     const route = useRoute();
     const [tasks, setTasks] = useState(Data);
 
-  useEffect(() => {
-    if (route.params?.newTask) {
-      const newTask = route.params.newTask;
-
-      setTasks((prev) =>
-        prev.map((col) =>
-          col.title === newTask.column
-            ? { ...col, data: [...col.data, newTask] }
-            : col
-        )
-      );
-    }
-    },[route.params?.newTask])
+    useEffect(() => {
+      if (newTask) {
+        setTasks((prev) =>
+          prev.map((col) =>
+            col.title === newTask.status
+              ? { ...col, data: [...col.data, newTask] }
+              : col
+          )
+        );
+      }
+    }, [newTask]);
 
   return (
     <View style={styles.container}>

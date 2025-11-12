@@ -9,7 +9,7 @@ const TaskColumn = ({data}) => {
           <Text style={styles.title}>{data.title}</Text>
           <Text style={styles.count}>{data.data.length}</Text>
         </View>
-        <FlatList data={data.data} horizontal keyExtractor={(item=>item.id)} 
+        <FlatList data={data.data} horizontal keyExtractor={(item) => item.id.toString()}
          showsHorizontalScrollIndicator={false} renderItem={({item})=><TaskCard task={item} columnTitle={data.title}/>}>
         </FlatList>
     </View>

@@ -2,11 +2,12 @@ import { StyleSheet, Text, View,TouchableOpacity} from 'react-native'
 import React from 'react'
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-const addButton = () => {
-    const navigation =useNavigation()
+const addButton = ({onPress}) => {
+  //const navigation =useNavigation()
+  //onPress={()=>navigation.navigate('AddTask')}
   return (
     <View>
-            <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('AddTask')}>
+            <TouchableOpacity style={styles.button} onPress={onPress}>
                <Entypo name="squared-plus" size={48} color="#744BFC"/>
             </TouchableOpacity>
     </View>
