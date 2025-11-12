@@ -2,6 +2,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect ,useState} from 'react'
 import TaskColumn from './TaskColumn'
 import { useRoute } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Data=[
     {
@@ -43,16 +44,35 @@ const index = ({newTask}) => {
     const [tasks, setTasks] = useState(Data);
 
     useEffect(() => {
+      const loadTasks=async () => {
+        try{
+          const storedData=await AsyncStorage.getItem('tasksData')
+          if(storedData){
+            setTasks(JSON.parse(storedData))
+          }else{
+            await AsyncStorage.setItem('tasksData',JSON.stringify(Data))
+          }
+        }catch(error){
+          console.log("veri yüklenirken hata",error)
+        }
+      }
+      loadTasks()
+    },[])
+
+    useEffect(() => {
       if (newTask) {
-        setTasks((prev) =>
-          prev.map((col) =>
+        setTasks((prev) => {
+          const updated = prev.map((col) =>
             col.title === newTask.status
               ? { ...col, data: [...col.data, newTask] }
               : col
-          )
-        );
+          );
+          AsyncStorage.setItem('tasksData', JSON.stringify(updated)); // kaydet
+          return updated;
+        });
       }
     }, [newTask]);
+  
 
   return (
     <View style={styles.container}>

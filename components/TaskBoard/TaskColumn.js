@@ -1,8 +1,8 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import TaskCard from './TaskCard'
-
 const TaskColumn = ({data}) => {
+
   return (
     <View style={styles.container}>
         <View style={{flex:1,flexDirection:'row'}}>
