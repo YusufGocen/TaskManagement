@@ -73,10 +73,19 @@ const index = ({newTask}) => {
       }
     }, [newTask]);
   
+    const deleteTask=async (taskId)=>{
+      const updated = tasks.map((col) => ({
+        ...col , 
+        data:col.data.filter((task)=>task.id !==taskId)
+      }))
+      setTasks(updated)
+      await AsyncStorage.setItem("tasksData",JSON.stringify(updated))
+    }
 
   return (
     <View style={styles.container}>
-      <FlatList data={tasks} keyExtractor={(item)=>item.id.toString()} renderItem={({ item }) => <TaskColumn data={item} />} showsVerticalScrollIndicator={false}>    
+      <FlatList data={tasks} keyExtractor={(item)=>item.id.toString()} renderItem={({ item }) => 
+        <TaskColumn data={item} onDelete={deleteTask} />} showsVerticalScrollIndicator={false}>    
       </FlatList>
     </View>
   )

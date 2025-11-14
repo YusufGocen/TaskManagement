@@ -1,8 +1,8 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import TaskCard from './TaskCard'
-const TaskColumn = ({data}) => {
 
+const TaskColumn = ({data , onDelete}) => {
   return (
     <View style={styles.container}>
         <View style={{flex:1,flexDirection:'row'}}>
@@ -10,7 +10,8 @@ const TaskColumn = ({data}) => {
           <Text style={styles.count}>{data.data.length}</Text>
         </View>
         <FlatList data={data.data} horizontal keyExtractor={(item) => item.id.toString()}
-         showsHorizontalScrollIndicator={false} renderItem={({item})=><TaskCard task={item} columnTitle={data.title}/>}>
+         showsHorizontalScrollIndicator={false} renderItem={({item})=>
+         <TaskCard task={item} columnTitle={data.title} onDelete={onDelete}/>}>
         </FlatList>
     </View>
   )
